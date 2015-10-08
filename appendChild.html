@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>appendChild test</title>
+        <script type="text/javascript">
+            window.onload = function () {
+                var table = document.createElement('table');
+                var tbody = document.createElement('tbody');
+                var nRandoms = 10;
+                var nNows = 10;
+                var randoms = [], nows = [];
+                var tr = document.createElement('tr');
+                tr.appendChild(document.createElement('td'));
+                for (var i=0; i<nRandoms; ++i) {
+                    randoms.push(Math.random());
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(randoms[i]));
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+                for (var i=0; i<nNows; ++i) {
+                    tr = document.createElement('tr');
+                    now = Date.now();
+                    var td = document.createElement('td');
+                    td.appendChild(document.createTextNode(now));
+                    tr.appendChild(td);
+                    for (var j=0; j<nRandoms; ++j) {
+                        td = document.createElement('td');
+                        var a = document.createElement('a');
+                        a.href = 'https://www.google.com/?r=' + randoms[j] + '&n=' + now;
+                        a.appendChild(document.createTextNode(randoms[j]));
+                        a.appendChild(document.createTextNode(now));
+                        td.appendChild(a);
+                        tr.appendChild(td);
+                    }
+                    table.appendChild(tr);
+                }
+                document.body.appendChild(table);
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
