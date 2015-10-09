@@ -26,11 +26,11 @@
                     tr.appendChild(td);
                     for (var j=0; j<nRandoms; ++j) {
                         td = document.createElement('td');
-                        var a = document.createElement('a');
-                        a.href = 'https://www.google.com/?r=' + randoms[j] + '&n=' + now;
-                        a.appendChild(document.createTextNode(randoms[j]));
-                        a.appendChild(document.createTextNode(now));
-                        td.appendChild(a);
+                        var img = document.createElement('img');
+                        img.src = 'space/' + Math.floor(Math.random()*5) + '.jpg?r=' + randoms[j] + '&n=' + now;
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '100%';
+                        td.appendChild(img);
                         tr.appendChild(td);
                     }
                     table.appendChild(tr);
