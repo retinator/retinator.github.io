@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript">
+      function sleep(milliseconds){
+        var start = new Date().getTime();
+        var keep_looping = true;
+        while (keep_looping) {
+          if ((new Date().getTime() - start)> milliseconds) {
+            keep_looping = false;
+          }
+        }
+      }
+    window.addEventListener('DOMContentLoaded', function (event) {
+      sleep(500);
+      var invocation = new XMLHttpRequest();
+      var url = 'vary.png';
+
+      function callOtherDomain(){
+        if(invocation) {
+          invocation.open('GET', url, false);
+          invocation.setRequestHeader('MyHeader', 'yoyo');
+          invocation.send();
+        }
+      }
+      callOtherDomain();
+    });
+    </script>
+  </head>
+<body><h1>Page with one xmlhttprequest to test vary headers.</h1>
+<script>
+document.write('<br></br>');
+</script>
+<img src='vary.png?why=because_wpt_does_not_like_pages_with_no_objects'>
+</body>
+</html>
