@@ -1,0 +1,12 @@
+[
+    {
+        "trigger": {
+		    "url-filter": "^https?://",
+		    "url-filter-is-case-sensitive": true
+        },
+        "action": {
+            "type": "css-display-none",
+            "selector": "[id=lowercase], [id=LOWERCASEIDUPPERCASERULE], [id=uppercaseidlowercaserule], [id=UPPERCASE]"
+        }
+    }
+]
