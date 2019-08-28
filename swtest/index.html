@@ -4,14 +4,17 @@ An image will appear here in 3 seconds:
   navigator.serviceWorker.register('sw.js')
     .then(function (reg) {
         console.log('SW registered!', reg);
-        reg.showNotification("Announcing Viasat Shield", {
-          body: 'Protect your home internet and wifi.',
-          actions: [
-            {action: 'google_play', title: "Google Play", icon: 'https://www.gstatic.com/android/market_images/web/favicon_v2.ico'},
-            {action: 'app_store', title: "App Store", icon: 'https://www.apple.com/v/ios/app-store/d/images/overview/app_store_icon__fngcxe43zo2u_small_2x.jpg'}
-          ],
-          requireInteraction: true,
-          image: "vshield.webp",
+        Notification.requestPermission(function(result) {
+          if (result !== 'granted') return;
+          reg.showNotification("Announcing Viasat Shield", {
+            body: 'Protect your home internet and wifi.',
+            actions: [
+              {action: 'google_play', title: "Google Play", icon: 'https://www.gstatic.com/android/market_images/web/favicon_v2.ico'},
+              {action: 'app_store', title: "App Store", icon: 'https://www.apple.com/v/ios/app-store/d/images/overview/app_store_icon__fngcxe43zo2u_small_2x.jpg'}
+            ],
+            requireInteraction: true,
+            image: "vshield.webp",
+          });
         });
         /*reg.showNotification("New mail from Alice", {
           actions: [{action: 'archive', title: "Archive"}]
