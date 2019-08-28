@@ -19,7 +19,7 @@ self.addEventListener('notificationclick', function(event) {
   if (event.action === 'google_play') {
     clients.openWindow("https://play.google.com/store/apps/details?id=com.viasatshield");
   } else if (event.action === 'app_store') {
-    clients.openWindow("https://https://www.apple.com/ios/app-store/");
+    clients.openWindow("https://apps.apple.com/us/app/viasat-shield/id1473532286");
   } else {
     clients.openWindow("https://shield.viasat.com/");
   }
