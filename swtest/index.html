@@ -6,7 +6,7 @@ An image will appear here in 3 seconds:
         console.log('SW registered!', reg);
         reg.showNotification("Announcing Viasat Shield", {
           body: 'Protect your home internet and wifi.',
-          actions: [{action: 'archive', title: "Archive"}],
+          actions: [{action: 'archive', title: "Archive", icon: 'https://www.gstatic.com/android/market_images/web/favicon_v2.ico'}],
           requireInteraction: true,
           image: "vshield.webp",
         });
@@ -27,7 +27,7 @@ An image will appear here in 3 seconds:
 
   setTimeout(() => {
     const img = new Image();
-    img.src = '/dog.svg';
+    img.src = 'dog.svg';
     document.body.appendChild(img);
     const img2 = new Image();
     img2.src = 'blahblah';
