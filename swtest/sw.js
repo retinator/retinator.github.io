@@ -17,11 +17,19 @@ self.addEventListener('activate', event => {
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
   if (event.action === 'google_play') {
-    clients.openWindow("https://play.google.com/store/apps/details?id=com.viasatshield");
+    if (event.notification.data.os === "Android") {
+      clients.openWindow("market://details?id=com.viasatshield");
+    } else {
+      clients.openWindow("https://play.google.com/store/apps/details?id=com.viasatshield");
+    }
   } else if (event.action === 'app_store') {
     clients.openWindow("https://apps.apple.com/us/app/viasat-shield/id1473532286");
   } else {
-    clients.openWindow("https://shield.viasat.com/");
+    if (event.notification.data.os === "Android") {
+      clients.openWindow("https://play.app.goo.gl/?link=https://play.google.com/store/apps/details?id=com.viasatshield");
+    } else {
+      clients.openWindow("https://shield.viasat.com/");
+    }
   }
 }, false);
 

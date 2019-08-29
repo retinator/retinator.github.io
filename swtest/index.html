@@ -6,15 +6,29 @@ An image will appear here in 3 seconds:
         console.log('SW registered!', reg);
         Notification.requestPermission(function(result) {
           if (result !== 'granted') return;
-          reg.showNotification("Announcing Viasat Shield", {
+          var uaPlatform = navigator.userAgent.substring(navigator.userAgent.indexOf("(")+1, navigator.userAgent.indexOf(")"));
+          var os = uaPlatform.substring(0, Math.min(uaPlatform.indexOf(" "), uaPlatform.indexOf(";")));
+          if (os === "Linux" && uaPlatform.includes("Android")) {
+            os = "Android";
+          }
+          notificationObject = {
             body: 'Protect your home internet and wifi.',
-            actions: [
+            requireInteraction: true,
+            data: {os: os},
+          };
+          if (os === "Android") {
+            notificationObject.image = "vshield_android.png";
+            /*notificationObject.actions = [
+              {action: 'google_play', title: "Download", icon: 'https://www.gstatic.com/android/market_images/web/favicon_v2.ico'},
+            ];*/
+          } else {
+            notificationObject.image = "vshield_win.png";
+            notificationObject.actions = [
               {action: 'google_play', title: "Google Play", icon: 'https://www.gstatic.com/android/market_images/web/favicon_v2.ico'},
               {action: 'app_store', title: "App Store", icon: 'https://www.apple.com/v/ios/app-store/d/images/overview/app_store_icon__fngcxe43zo2u_small_2x.jpg'}
-            ],
-            requireInteraction: true,
-            image: "vshield.webp",
-          });
+            ];
+          }
+          reg.showNotification("Announcing Viasat Shield", notificationObject);
         });
         /*reg.showNotification("New mail from Alice", {
           actions: [{action: 'archive', title: "Archive"}]

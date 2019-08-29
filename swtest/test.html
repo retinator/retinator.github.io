@@ -1,0 +1,16 @@
+<html>
+    <body>
+    <script type="text/javascript">
+        document.writeln(navigator.platform);
+        document.writeln(navigator.userAgent);
+        document.writeln(navigator.userAgent.substring(navigator.userAgent.indexOf("(")+1, navigator.userAgent.indexOf(")")));
+
+          var uaPlatform = navigator.userAgent.substring(navigator.userAgent.indexOf("(")+1, navigator.userAgent.indexOf(")"));
+          var os = uaPlatform.substring(0, Math.min(uaPlatform.indexOf(" "), uaPlatform.indexOf(";")));
+          if (os === "Linux" && uaPlatform.includes("Android")) {
+            os = "Android";
+          }
+
+      document.writeln("<p>" + uaPlatform + "</p><p>" + os + "</p>");
+    </script>
+</html>
